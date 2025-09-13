@@ -1,13 +1,17 @@
 model User {
-  id            String    @id @map("_id")
+  id            String         @id @map("_id")
   name          String
   email         String
   emailVerified Boolean
   image         String?
+  role          String         @default("user") // "user" or "admin"
   createdAt     DateTime
   updatedAt     DateTime
   sessions      Session[]
   accounts      Account[]
+  devotions     Devotion[]
+  prayerRequests PrayerRequest[]
+  prayers       Prayer[]
 
   @@unique([email])
   @@map("user")
