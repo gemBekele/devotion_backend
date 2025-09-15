@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import prisma from "../prisma";
+import prisma from "../prisma.js";
 
 // Middleware to validate token and attach session/user (reused from other controllers)
 export async function authenticateToken(

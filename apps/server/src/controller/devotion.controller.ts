@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import prisma from "../prisma";
-import { auth } from "../lib/auth"; // Import your Better Auth instance
+import prisma from "../prisma.js";
+import { auth } from "../lib/auth.js"; // Import your Better Auth instance
 
 // Middleware to validate token and attach session/user
 export async function authenticateToken(

@@ -1,13 +1,13 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import { auth } from "./lib/auth";
+import { auth } from "./lib/auth.js";
 import { toNodeHandler } from "better-auth/node";
-import { devotionRoutes } from "./routers/devotion.routes";
-import { authRoutes } from "./routers/auth.routes";
-import { prayerRequestRoutes } from "./routers/prayerRequest.routes";
-import { counselingRoutes } from "./routers/counseling.routes";
-import adminRoutes from "./routers/admin.routes";
+import { devotionRoutes } from "./routers/devotion.routes.js";
+import { authRoutes } from "./routers/auth.routes.js";
+import { prayerRequestRoutes } from "./routers/prayerRequest.routes.js";
+import { counselingRoutes } from "./routers/counseling.routes.js";
+import adminRoutes from "./routers/admin.routes.js";
 
 // Extend Express Request type to include cookies and user/session
 declare global {

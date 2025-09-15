@@ -8,7 +8,7 @@ import {
   prayForRequest,
   getMyPrayerRequests,
   authenticateToken,
-} from "../controller/prayerRequest.controller";
+} from "../controller/prayerRequest.controller.js";
 
 const router = Router();
 

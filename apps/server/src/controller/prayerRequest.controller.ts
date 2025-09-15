@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import prisma from "../prisma";
+import prisma from "../prisma.js";
 
 // Middleware to validate token and attach session/user
 export async function authenticateToken(
@@ -180,7 +180,7 @@ export async function getPrayerRequests(req: Request, res: Response) {
     });
 
     // Update prayer count for each request (in case it's out of sync)
-    const updatedPrayerRequests = prayerRequests.map((request) => ({
+    const updatedPrayerRequests = prayerRequests.map((request: any) => ({
       ...request,
       prayerCount: request.prayers.length,
     }));
@@ -492,7 +492,7 @@ export async function getMyPrayerRequests(req: Request, res: Response) {
       skip: parseInt(offset as string),
     });
 
-    const updatedPrayerRequests = prayerRequests.map((request) => ({
+    const updatedPrayerRequests = prayerRequests.map((request: any) => ({
       ...request,
       prayerCount: request.prayers.length,
     }));

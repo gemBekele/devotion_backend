@@ -4,9 +4,9 @@ import {
   getDevotions,
   getDevotionsByDate,
   getCurrentUser,
-} from "../controller/devotion.controller";
-import { getDevotionById } from "../controller/devotion.controller";
-import { authenticateToken, requireAdmin } from "../controller/devotion.controller";
+} from "../controller/devotion.controller.js";
+import { getDevotionById } from "../controller/devotion.controller.js";
+import { authenticateToken, requireAdmin } from "../controller/devotion.controller.js";
 
 const router = Router();
 

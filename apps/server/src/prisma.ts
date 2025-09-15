@@ -1,5 +1,5 @@
 // apps/server/src/prisma.ts
-import { PrismaClient } from "../prisma/generated/client"; // Adjust path if needed
+import { PrismaClient } from "../prisma/generated/client.js"; // Adjust path if needed
 
 const prisma = new PrismaClient();
 

@@ -1,11 +1,11 @@
 import express from "express";
-import { authenticateToken } from "../controller/devotion.controller";
+import { authenticateToken } from "../controller/devotion.controller.js";
 import {
   createCounselingRequest,
   getUserCounselingRequests,
   getAllCounselingRequests,
   updateCounselingRequestStatus,
-} from "../controller/counseling.controller";
+} from "../controller/counseling.controller.js";
 
 const router = express.Router();
 

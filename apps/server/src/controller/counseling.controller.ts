@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import prisma from "../prisma";
+import prisma from "../prisma.js";
 
 // Create a counseling request
 export async function createCounselingRequest(req: Request, res: Response) {

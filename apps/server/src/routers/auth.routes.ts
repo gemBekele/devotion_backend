@@ -1,7 +1,7 @@
 // routers/auth.routes.ts
 import { Router } from "express";
-import { auth } from "../lib/auth";
-import { authenticateToken, getCurrentUser } from "../controller/devotion.controller";
+import { auth } from "../lib/auth.js";
+import { authenticateToken, getCurrentUser } from "../controller/devotion.controller.js";
 
 const router = Router();
 

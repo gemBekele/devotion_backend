@@ -7,7 +7,7 @@ import {
   demoteFromAdmin,
   getAdminStats,
   searchUsers
-} from "../controller/admin.controller";
+} from "../controller/admin.controller.js";
 
 const router = Router();
 
