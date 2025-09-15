@@ -3,7 +3,8 @@ services:
     name: devotion-api
     env: node
     plan: free
-    buildCommand: npm install && npm run build && npx prisma generate
+    buildCommand: npm install && npm run build && npx prisma generate --schema ./apps/server/prisma/schema.prisma
+
     startCommand: npm start
     envVars:
       - key: NODE_ENV
