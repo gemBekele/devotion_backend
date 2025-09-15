@@ -12,6 +12,7 @@ model User {
   devotions     Devotion[]
   prayerRequests PrayerRequest[]
   prayers       Prayer[]
+  counselingRequests CounselingRequest[]
 
   @@unique([email])
   @@map("user")

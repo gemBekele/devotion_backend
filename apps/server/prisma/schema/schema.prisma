@@ -52,3 +52,19 @@ model Prayer {
   @@unique([userId, prayerRequestId]) // Prevent duplicate prayers from same user
   @@map("prayer")
 }
+
+model CounselingRequest {
+  id          String    @id @default(cuid()) @map("_id")
+  subject     String
+  message     String
+  urgency     String    @default("normal") // "normal" or "urgent"
+  isAnonymous Boolean   @default(false)
+  status      String    @default("pending") // "pending", "in_progress", "resolved", "closed"
+  response    String?   // Counselor's response
+  created_at  DateTime  @default(now()) @db.Timestamptz
+  updated_at  DateTime  @updatedAt @db.Timestamptz
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+
+  @@map("counseling_request")
+}

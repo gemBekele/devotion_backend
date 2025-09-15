@@ -6,6 +6,7 @@ import { toNodeHandler } from "better-auth/node";
 import { devotionRoutes } from "./routers/devotion.routes";
 import { authRoutes } from "./routers/auth.routes";
 import { prayerRequestRoutes } from "./routers/prayerRequest.routes";
+import { counselingRoutes } from "./routers/counseling.routes";
 import adminRoutes from "./routers/admin.routes";
 
 // Extend Express Request type to include cookies and user/session
@@ -164,6 +165,7 @@ function logResponse(requestId: string, req: any, res: any, body: any, startTime
 app.use("/api", authRoutes);
 app.use("/api/devotions", devotionRoutes);
 app.use("/api/prayer-requests", prayerRequestRoutes);
+app.use("/api/counseling", counselingRoutes);
 app.use("/api/admin", adminRoutes);
 
 app.get("/", (_req, res) => {

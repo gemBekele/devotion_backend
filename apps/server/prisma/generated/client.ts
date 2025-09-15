@@ -76,5 +76,10 @@ export type PrayerRequest = Prisma.PrayerRequestModel
  * 
  */
 export type Prayer = Prisma.PrayerModel
+/**
+ * Model CounselingRequest
+ * 
+ */
+export type CounselingRequest = Prisma.CounselingRequestModel
 
 

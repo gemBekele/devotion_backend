@@ -210,6 +210,7 @@ export type UserWhereInput = {
   devotions?: Prisma.DevotionListRelationFilter
   prayerRequests?: Prisma.PrayerRequestListRelationFilter
   prayers?: Prisma.PrayerListRelationFilter
+  counselingRequests?: Prisma.CounselingRequestListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -226,6 +227,7 @@ export type UserOrderByWithRelationInput = {
   devotions?: Prisma.DevotionOrderByRelationAggregateInput
   prayerRequests?: Prisma.PrayerRequestOrderByRelationAggregateInput
   prayers?: Prisma.PrayerOrderByRelationAggregateInput
+  counselingRequests?: Prisma.CounselingRequestOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -245,6 +247,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   devotions?: Prisma.DevotionListRelationFilter
   prayerRequests?: Prisma.PrayerRequestListRelationFilter
   prayers?: Prisma.PrayerListRelationFilter
+  counselingRequests?: Prisma.CounselingRequestListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -289,6 +292,7 @@ export type UserCreateInput = {
   devotions?: Prisma.DevotionCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -305,6 +309,7 @@ export type UserUncheckedCreateInput = {
   devotions?: Prisma.DevotionUncheckedCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -321,6 +326,7 @@ export type UserUpdateInput = {
   devotions?: Prisma.DevotionUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -337,6 +343,7 @@ export type UserUncheckedUpdateInput = {
   devotions?: Prisma.DevotionUncheckedUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -496,6 +503,20 @@ export type UserUpdateOneRequiredWithoutPrayersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutPrayersInput, Prisma.UserUpdateWithoutPrayersInput>, Prisma.UserUncheckedUpdateWithoutPrayersInput>
 }
 
+export type UserCreateNestedOneWithoutCounselingRequestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCounselingRequestsInput, Prisma.UserUncheckedCreateWithoutCounselingRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCounselingRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutCounselingRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutCounselingRequestsInput, Prisma.UserUncheckedCreateWithoutCounselingRequestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutCounselingRequestsInput
+  upsert?: Prisma.UserUpsertWithoutCounselingRequestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCounselingRequestsInput, Prisma.UserUpdateWithoutCounselingRequestsInput>, Prisma.UserUncheckedUpdateWithoutCounselingRequestsInput>
+}
+
 export type UserCreateWithoutSessionsInput = {
   id: string
   name: string
@@ -509,6 +530,7 @@ export type UserCreateWithoutSessionsInput = {
   devotions?: Prisma.DevotionCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -524,6 +546,7 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   devotions?: Prisma.DevotionUncheckedCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -555,6 +578,7 @@ export type UserUpdateWithoutSessionsInput = {
   devotions?: Prisma.DevotionUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -570,6 +594,7 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   devotions?: Prisma.DevotionUncheckedUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -585,6 +610,7 @@ export type UserCreateWithoutAccountsInput = {
   devotions?: Prisma.DevotionCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -600,6 +626,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   devotions?: Prisma.DevotionUncheckedCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -631,6 +658,7 @@ export type UserUpdateWithoutAccountsInput = {
   devotions?: Prisma.DevotionUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -646,6 +674,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   devotions?: Prisma.DevotionUncheckedUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutDevotionsInput = {
@@ -661,6 +690,7 @@ export type UserCreateWithoutDevotionsInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutDevotionsInput = {
@@ -676,6 +706,7 @@ export type UserUncheckedCreateWithoutDevotionsInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutDevotionsInput = {
@@ -707,6 +738,7 @@ export type UserUpdateWithoutDevotionsInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDevotionsInput = {
@@ -722,6 +754,7 @@ export type UserUncheckedUpdateWithoutDevotionsInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPrayerRequestsInput = {
@@ -737,6 +770,7 @@ export type UserCreateWithoutPrayerRequestsInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   devotions?: Prisma.DevotionCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPrayerRequestsInput = {
@@ -752,6 +786,7 @@ export type UserUncheckedCreateWithoutPrayerRequestsInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   devotions?: Prisma.DevotionUncheckedCreateNestedManyWithoutUserInput
   prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPrayerRequestsInput = {
@@ -783,6 +818,7 @@ export type UserUpdateWithoutPrayerRequestsInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   devotions?: Prisma.DevotionUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrayerRequestsInput = {
@@ -798,6 +834,7 @@ export type UserUncheckedUpdateWithoutPrayerRequestsInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   devotions?: Prisma.DevotionUncheckedUpdateManyWithoutUserNestedInput
   prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateWithoutPrayersInput = {
@@ -813,6 +850,7 @@ export type UserCreateWithoutPrayersInput = {
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   devotions?: Prisma.DevotionCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutPrayersInput = {
@@ -828,6 +866,7 @@ export type UserUncheckedCreateWithoutPrayersInput = {
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   devotions?: Prisma.DevotionUncheckedCreateNestedManyWithoutUserInput
   prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutUserInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutPrayersInput = {
@@ -859,6 +898,7 @@ export type UserUpdateWithoutPrayersInput = {
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   devotions?: Prisma.DevotionUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPrayersInput = {
@@ -874,6 +914,87 @@ export type UserUncheckedUpdateWithoutPrayersInput = {
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   devotions?: Prisma.DevotionUncheckedUpdateManyWithoutUserNestedInput
   prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutUserNestedInput
+  counselingRequests?: Prisma.CounselingRequestUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutCounselingRequestsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified: boolean
+  image?: string | null
+  role?: string
+  createdAt: Date | string
+  updatedAt: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  devotions?: Prisma.DevotionCreateNestedManyWithoutUserInput
+  prayerRequests?: Prisma.PrayerRequestCreateNestedManyWithoutUserInput
+  prayers?: Prisma.PrayerCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutCounselingRequestsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified: boolean
+  image?: string | null
+  role?: string
+  createdAt: Date | string
+  updatedAt: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  devotions?: Prisma.DevotionUncheckedCreateNestedManyWithoutUserInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedCreateNestedManyWithoutUserInput
+  prayers?: Prisma.PrayerUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutCounselingRequestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutCounselingRequestsInput, Prisma.UserUncheckedCreateWithoutCounselingRequestsInput>
+}
+
+export type UserUpsertWithoutCounselingRequestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutCounselingRequestsInput, Prisma.UserUncheckedUpdateWithoutCounselingRequestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutCounselingRequestsInput, Prisma.UserUncheckedCreateWithoutCounselingRequestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutCounselingRequestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutCounselingRequestsInput, Prisma.UserUncheckedUpdateWithoutCounselingRequestsInput>
+}
+
+export type UserUpdateWithoutCounselingRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  devotions?: Prisma.DevotionUpdateManyWithoutUserNestedInput
+  prayerRequests?: Prisma.PrayerRequestUpdateManyWithoutUserNestedInput
+  prayers?: Prisma.PrayerUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutCounselingRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  devotions?: Prisma.DevotionUncheckedUpdateManyWithoutUserNestedInput
+  prayerRequests?: Prisma.PrayerRequestUncheckedUpdateManyWithoutUserNestedInput
+  prayers?: Prisma.PrayerUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -887,6 +1008,7 @@ export type UserCountOutputType = {
   devotions: number
   prayerRequests: number
   prayers: number
+  counselingRequests: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -895,6 +1017,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   devotions?: boolean | UserCountOutputTypeCountDevotionsArgs
   prayerRequests?: boolean | UserCountOutputTypeCountPrayerRequestsArgs
   prayers?: boolean | UserCountOutputTypeCountPrayersArgs
+  counselingRequests?: boolean | UserCountOutputTypeCountCounselingRequestsArgs
 }
 
 /**
@@ -942,6 +1065,13 @@ export type UserCountOutputTypeCountPrayersArgs<ExtArgs extends runtime.Types.Ex
   where?: Prisma.PrayerWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountCounselingRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.CounselingRequestWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -957,6 +1087,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   devotions?: boolean | Prisma.User$devotionsArgs<ExtArgs>
   prayerRequests?: boolean | Prisma.User$prayerRequestsArgs<ExtArgs>
   prayers?: boolean | Prisma.User$prayersArgs<ExtArgs>
+  counselingRequests?: boolean | Prisma.User$counselingRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -1000,6 +1131,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   devotions?: boolean | Prisma.User$devotionsArgs<ExtArgs>
   prayerRequests?: boolean | Prisma.User$prayerRequestsArgs<ExtArgs>
   prayers?: boolean | Prisma.User$prayersArgs<ExtArgs>
+  counselingRequests?: boolean | Prisma.User$counselingRequestsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1013,6 +1145,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     devotions: Prisma.$DevotionPayload<ExtArgs>[]
     prayerRequests: Prisma.$PrayerRequestPayload<ExtArgs>[]
     prayers: Prisma.$PrayerPayload<ExtArgs>[]
+    counselingRequests: Prisma.$CounselingRequestPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1422,6 +1555,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   devotions<T extends Prisma.User$devotionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$devotionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   prayerRequests<T extends Prisma.User$prayerRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$prayerRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrayerRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   prayers<T extends Prisma.User$prayersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$prayersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrayerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  counselingRequests<T extends Prisma.User$counselingRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$counselingRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$CounselingRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1964,6 +2098,30 @@ export type User$prayersArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   distinct?: Prisma.PrayerScalarFieldEnum | Prisma.PrayerScalarFieldEnum[]
+}
+
+/**
+ * User.counselingRequests
+ */
+export type User$counselingRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the CounselingRequest
+   */
+  select?: Prisma.CounselingRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the CounselingRequest
+   */
+  omit?: Prisma.CounselingRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.CounselingRequestInclude<ExtArgs> | null
+  where?: Prisma.CounselingRequestWhereInput
+  orderBy?: Prisma.CounselingRequestOrderByWithRelationInput | Prisma.CounselingRequestOrderByWithRelationInput[]
+  cursor?: Prisma.CounselingRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.CounselingRequestScalarFieldEnum | Prisma.CounselingRequestScalarFieldEnum[]
 }
 
 /**

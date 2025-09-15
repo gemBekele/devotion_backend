@@ -400,7 +400,8 @@ export const ModelName = {
   Verification: 'Verification',
   Devotion: 'Devotion',
   PrayerRequest: 'PrayerRequest',
-  Prayer: 'Prayer'
+  Prayer: 'Prayer',
+  CounselingRequest: 'CounselingRequest'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -416,7 +417,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "devotion" | "prayerRequest" | "prayer"
+    modelProps: "user" | "session" | "account" | "verification" | "devotion" | "prayerRequest" | "prayer" | "counselingRequest"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -938,6 +939,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CounselingRequest: {
+      payload: Prisma.$CounselingRequestPayload<ExtArgs>
+      fields: Prisma.CounselingRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CounselingRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CounselingRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.CounselingRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CounselingRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>
+        }
+        findMany: {
+          args: Prisma.CounselingRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>[]
+        }
+        create: {
+          args: Prisma.CounselingRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>
+        }
+        createMany: {
+          args: Prisma.CounselingRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CounselingRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.CounselingRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>
+        }
+        update: {
+          args: Prisma.CounselingRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.CounselingRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CounselingRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CounselingRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.CounselingRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CounselingRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.CounselingRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCounselingRequest>
+        }
+        groupBy: {
+          args: Prisma.CounselingRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CounselingRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CounselingRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CounselingRequestCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1077,6 +1152,22 @@ export const PrayerScalarFieldEnum = {
 } as const
 
 export type PrayerScalarFieldEnum = (typeof PrayerScalarFieldEnum)[keyof typeof PrayerScalarFieldEnum]
+
+
+export const CounselingRequestScalarFieldEnum = {
+  id: 'id',
+  subject: 'subject',
+  message: 'message',
+  urgency: 'urgency',
+  isAnonymous: 'isAnonymous',
+  status: 'status',
+  response: 'response',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  userId: 'userId'
+} as const
+
+export type CounselingRequestScalarFieldEnum = (typeof CounselingRequestScalarFieldEnum)[keyof typeof CounselingRequestScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1253,6 +1344,7 @@ export type GlobalOmitConfig = {
   devotion?: Prisma.DevotionOmit
   prayerRequest?: Prisma.PrayerRequestOmit
   prayer?: Prisma.PrayerOmit
+  counselingRequest?: Prisma.CounselingRequestOmit
 }
 
 /* Types for Logging */
