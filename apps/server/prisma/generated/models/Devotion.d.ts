@@ -1,0 +1,1421 @@
+/**
+ * This file exports the `Devotion` model and its related types.
+ *
+ * 🟢 You can import this file directly.
+ */
+import * as runtime from "@prisma/client/runtime/library";
+import type * as Prisma from "../internal/prismaNamespace.js";
+/**
+ * Model Devotion
+ *
+ */
+export type DevotionModel = runtime.Types.Result.DefaultSelection<Prisma.$DevotionPayload>;
+export type AggregateDevotion = {
+    _count: DevotionCountAggregateOutputType | null;
+    _min: DevotionMinAggregateOutputType | null;
+    _max: DevotionMaxAggregateOutputType | null;
+};
+export type DevotionMinAggregateOutputType = {
+    id: string | null;
+    title: string | null;
+    content: string | null;
+    verse_reference: string | null;
+    scriptureText: string | null;
+    date: Date | null;
+    imageUrl: string | null;
+    readTime: string | null;
+    author: string | null;
+    created_at: Date | null;
+    devotion_date: Date | null;
+    userId: string | null;
+};
+export type DevotionMaxAggregateOutputType = {
+    id: string | null;
+    title: string | null;
+    content: string | null;
+    verse_reference: string | null;
+    scriptureText: string | null;
+    date: Date | null;
+    imageUrl: string | null;
+    readTime: string | null;
+    author: string | null;
+    created_at: Date | null;
+    devotion_date: Date | null;
+    userId: string | null;
+};
+export type DevotionCountAggregateOutputType = {
+    id: number;
+    title: number;
+    content: number;
+    verse_reference: number;
+    scriptureText: number;
+    date: number;
+    imageUrl: number;
+    readTime: number;
+    author: number;
+    created_at: number;
+    devotion_date: number;
+    userId: number;
+    _all: number;
+};
+export type DevotionMinAggregateInputType = {
+    id?: true;
+    title?: true;
+    content?: true;
+    verse_reference?: true;
+    scriptureText?: true;
+    date?: true;
+    imageUrl?: true;
+    readTime?: true;
+    author?: true;
+    created_at?: true;
+    devotion_date?: true;
+    userId?: true;
+};
+export type DevotionMaxAggregateInputType = {
+    id?: true;
+    title?: true;
+    content?: true;
+    verse_reference?: true;
+    scriptureText?: true;
+    date?: true;
+    imageUrl?: true;
+    readTime?: true;
+    author?: true;
+    created_at?: true;
+    devotion_date?: true;
+    userId?: true;
+};
+export type DevotionCountAggregateInputType = {
+    id?: true;
+    title?: true;
+    content?: true;
+    verse_reference?: true;
+    scriptureText?: true;
+    date?: true;
+    imageUrl?: true;
+    readTime?: true;
+    author?: true;
+    created_at?: true;
+    devotion_date?: true;
+    userId?: true;
+    _all?: true;
+};
+export type DevotionAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Devotion to aggregate.
+     */
+    where?: Prisma.DevotionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Devotions to fetch.
+     */
+    orderBy?: Prisma.DevotionOrderByWithRelationInput | Prisma.DevotionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.DevotionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Devotions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Devotions.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Devotions
+    **/
+    _count?: true | DevotionCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: DevotionMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: DevotionMaxAggregateInputType;
+};
+export type GetDevotionAggregateType<T extends DevotionAggregateArgs> = {
+    [P in keyof T & keyof AggregateDevotion]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateDevotion[P]> : Prisma.GetScalarType<T[P], AggregateDevotion[P]>;
+};
+export type DevotionGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DevotionWhereInput;
+    orderBy?: Prisma.DevotionOrderByWithAggregationInput | Prisma.DevotionOrderByWithAggregationInput[];
+    by: Prisma.DevotionScalarFieldEnum[] | Prisma.DevotionScalarFieldEnum;
+    having?: Prisma.DevotionScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: DevotionCountAggregateInputType | true;
+    _min?: DevotionMinAggregateInputType;
+    _max?: DevotionMaxAggregateInputType;
+};
+export type DevotionGroupByOutputType = {
+    id: string;
+    title: string;
+    content: string;
+    verse_reference: string | null;
+    scriptureText: string | null;
+    date: Date;
+    imageUrl: string | null;
+    readTime: string | null;
+    author: string;
+    created_at: Date;
+    devotion_date: Date;
+    userId: string;
+    _count: DevotionCountAggregateOutputType | null;
+    _min: DevotionMinAggregateOutputType | null;
+    _max: DevotionMaxAggregateOutputType | null;
+};
+type GetDevotionGroupByPayload<T extends DevotionGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<DevotionGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof DevotionGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], DevotionGroupByOutputType[P]> : Prisma.GetScalarType<T[P], DevotionGroupByOutputType[P]>;
+}>>;
+export type DevotionWhereInput = {
+    AND?: Prisma.DevotionWhereInput | Prisma.DevotionWhereInput[];
+    OR?: Prisma.DevotionWhereInput[];
+    NOT?: Prisma.DevotionWhereInput | Prisma.DevotionWhereInput[];
+    id?: Prisma.StringFilter<"Devotion"> | string;
+    title?: Prisma.StringFilter<"Devotion"> | string;
+    content?: Prisma.StringFilter<"Devotion"> | string;
+    verse_reference?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    scriptureText?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    date?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    imageUrl?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    readTime?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    author?: Prisma.StringFilter<"Devotion"> | string;
+    created_at?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    devotion_date?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    userId?: Prisma.StringFilter<"Devotion"> | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+};
+export type DevotionOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    verse_reference?: Prisma.SortOrderInput | Prisma.SortOrder;
+    scriptureText?: Prisma.SortOrderInput | Prisma.SortOrder;
+    date?: Prisma.SortOrder;
+    imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
+    readTime?: Prisma.SortOrderInput | Prisma.SortOrder;
+    author?: Prisma.SortOrder;
+    created_at?: Prisma.SortOrder;
+    devotion_date?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    user?: Prisma.UserOrderByWithRelationInput;
+};
+export type DevotionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.DevotionWhereInput | Prisma.DevotionWhereInput[];
+    OR?: Prisma.DevotionWhereInput[];
+    NOT?: Prisma.DevotionWhereInput | Prisma.DevotionWhereInput[];
+    title?: Prisma.StringFilter<"Devotion"> | string;
+    content?: Prisma.StringFilter<"Devotion"> | string;
+    verse_reference?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    scriptureText?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    date?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    imageUrl?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    readTime?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    author?: Prisma.StringFilter<"Devotion"> | string;
+    created_at?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    devotion_date?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    userId?: Prisma.StringFilter<"Devotion"> | string;
+    user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>;
+}, "id">;
+export type DevotionOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    verse_reference?: Prisma.SortOrderInput | Prisma.SortOrder;
+    scriptureText?: Prisma.SortOrderInput | Prisma.SortOrder;
+    date?: Prisma.SortOrder;
+    imageUrl?: Prisma.SortOrderInput | Prisma.SortOrder;
+    readTime?: Prisma.SortOrderInput | Prisma.SortOrder;
+    author?: Prisma.SortOrder;
+    created_at?: Prisma.SortOrder;
+    devotion_date?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+    _count?: Prisma.DevotionCountOrderByAggregateInput;
+    _max?: Prisma.DevotionMaxOrderByAggregateInput;
+    _min?: Prisma.DevotionMinOrderByAggregateInput;
+};
+export type DevotionScalarWhereWithAggregatesInput = {
+    AND?: Prisma.DevotionScalarWhereWithAggregatesInput | Prisma.DevotionScalarWhereWithAggregatesInput[];
+    OR?: Prisma.DevotionScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.DevotionScalarWhereWithAggregatesInput | Prisma.DevotionScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"Devotion"> | string;
+    title?: Prisma.StringWithAggregatesFilter<"Devotion"> | string;
+    content?: Prisma.StringWithAggregatesFilter<"Devotion"> | string;
+    verse_reference?: Prisma.StringNullableWithAggregatesFilter<"Devotion"> | string | null;
+    scriptureText?: Prisma.StringNullableWithAggregatesFilter<"Devotion"> | string | null;
+    date?: Prisma.DateTimeWithAggregatesFilter<"Devotion"> | Date | string;
+    imageUrl?: Prisma.StringNullableWithAggregatesFilter<"Devotion"> | string | null;
+    readTime?: Prisma.StringNullableWithAggregatesFilter<"Devotion"> | string | null;
+    author?: Prisma.StringWithAggregatesFilter<"Devotion"> | string;
+    created_at?: Prisma.DateTimeWithAggregatesFilter<"Devotion"> | Date | string;
+    devotion_date?: Prisma.DateTimeWithAggregatesFilter<"Devotion"> | Date | string;
+    userId?: Prisma.StringWithAggregatesFilter<"Devotion"> | string;
+};
+export type DevotionCreateInput = {
+    id?: string;
+    title: string;
+    content: string;
+    verse_reference?: string | null;
+    scriptureText?: string | null;
+    date?: Date | string;
+    imageUrl?: string | null;
+    readTime?: string | null;
+    author: string;
+    created_at?: Date | string;
+    devotion_date: Date | string;
+    user: Prisma.UserCreateNestedOneWithoutDevotionsInput;
+};
+export type DevotionUncheckedCreateInput = {
+    id?: string;
+    title: string;
+    content: string;
+    verse_reference?: string | null;
+    scriptureText?: string | null;
+    date?: Date | string;
+    imageUrl?: string | null;
+    readTime?: string | null;
+    author: string;
+    created_at?: Date | string;
+    devotion_date: Date | string;
+    userId: string;
+};
+export type DevotionUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    verse_reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    scriptureText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    readTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    author?: Prisma.StringFieldUpdateOperationsInput | string;
+    created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    devotion_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    user?: Prisma.UserUpdateOneRequiredWithoutDevotionsNestedInput;
+};
+export type DevotionUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    verse_reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    scriptureText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    readTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    author?: Prisma.StringFieldUpdateOperationsInput | string;
+    created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    devotion_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+};
+export type DevotionCreateManyInput = {
+    id?: string;
+    title: string;
+    content: string;
+    verse_reference?: string | null;
+    scriptureText?: string | null;
+    date?: Date | string;
+    imageUrl?: string | null;
+    readTime?: string | null;
+    author: string;
+    created_at?: Date | string;
+    devotion_date: Date | string;
+    userId: string;
+};
+export type DevotionUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    verse_reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    scriptureText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    readTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    author?: Prisma.StringFieldUpdateOperationsInput | string;
+    created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    devotion_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DevotionUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    verse_reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    scriptureText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    readTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    author?: Prisma.StringFieldUpdateOperationsInput | string;
+    created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    devotion_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    userId?: Prisma.StringFieldUpdateOperationsInput | string;
+};
+export type DevotionListRelationFilter = {
+    every?: Prisma.DevotionWhereInput;
+    some?: Prisma.DevotionWhereInput;
+    none?: Prisma.DevotionWhereInput;
+};
+export type DevotionOrderByRelationAggregateInput = {
+    _count?: Prisma.SortOrder;
+};
+export type DevotionCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    verse_reference?: Prisma.SortOrder;
+    scriptureText?: Prisma.SortOrder;
+    date?: Prisma.SortOrder;
+    imageUrl?: Prisma.SortOrder;
+    readTime?: Prisma.SortOrder;
+    author?: Prisma.SortOrder;
+    created_at?: Prisma.SortOrder;
+    devotion_date?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type DevotionMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    verse_reference?: Prisma.SortOrder;
+    scriptureText?: Prisma.SortOrder;
+    date?: Prisma.SortOrder;
+    imageUrl?: Prisma.SortOrder;
+    readTime?: Prisma.SortOrder;
+    author?: Prisma.SortOrder;
+    created_at?: Prisma.SortOrder;
+    devotion_date?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type DevotionMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    title?: Prisma.SortOrder;
+    content?: Prisma.SortOrder;
+    verse_reference?: Prisma.SortOrder;
+    scriptureText?: Prisma.SortOrder;
+    date?: Prisma.SortOrder;
+    imageUrl?: Prisma.SortOrder;
+    readTime?: Prisma.SortOrder;
+    author?: Prisma.SortOrder;
+    created_at?: Prisma.SortOrder;
+    devotion_date?: Prisma.SortOrder;
+    userId?: Prisma.SortOrder;
+};
+export type DevotionCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.DevotionCreateWithoutUserInput, Prisma.DevotionUncheckedCreateWithoutUserInput> | Prisma.DevotionCreateWithoutUserInput[] | Prisma.DevotionUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.DevotionCreateOrConnectWithoutUserInput | Prisma.DevotionCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.DevotionCreateManyUserInputEnvelope;
+    connect?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+};
+export type DevotionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: Prisma.XOR<Prisma.DevotionCreateWithoutUserInput, Prisma.DevotionUncheckedCreateWithoutUserInput> | Prisma.DevotionCreateWithoutUserInput[] | Prisma.DevotionUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.DevotionCreateOrConnectWithoutUserInput | Prisma.DevotionCreateOrConnectWithoutUserInput[];
+    createMany?: Prisma.DevotionCreateManyUserInputEnvelope;
+    connect?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+};
+export type DevotionUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.DevotionCreateWithoutUserInput, Prisma.DevotionUncheckedCreateWithoutUserInput> | Prisma.DevotionCreateWithoutUserInput[] | Prisma.DevotionUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.DevotionCreateOrConnectWithoutUserInput | Prisma.DevotionCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.DevotionUpsertWithWhereUniqueWithoutUserInput | Prisma.DevotionUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.DevotionCreateManyUserInputEnvelope;
+    set?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    disconnect?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    delete?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    connect?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    update?: Prisma.DevotionUpdateWithWhereUniqueWithoutUserInput | Prisma.DevotionUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.DevotionUpdateManyWithWhereWithoutUserInput | Prisma.DevotionUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.DevotionScalarWhereInput | Prisma.DevotionScalarWhereInput[];
+};
+export type DevotionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: Prisma.XOR<Prisma.DevotionCreateWithoutUserInput, Prisma.DevotionUncheckedCreateWithoutUserInput> | Prisma.DevotionCreateWithoutUserInput[] | Prisma.DevotionUncheckedCreateWithoutUserInput[];
+    connectOrCreate?: Prisma.DevotionCreateOrConnectWithoutUserInput | Prisma.DevotionCreateOrConnectWithoutUserInput[];
+    upsert?: Prisma.DevotionUpsertWithWhereUniqueWithoutUserInput | Prisma.DevotionUpsertWithWhereUniqueWithoutUserInput[];
+    createMany?: Prisma.DevotionCreateManyUserInputEnvelope;
+    set?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    disconnect?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    delete?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    connect?: Prisma.DevotionWhereUniqueInput | Prisma.DevotionWhereUniqueInput[];
+    update?: Prisma.DevotionUpdateWithWhereUniqueWithoutUserInput | Prisma.DevotionUpdateWithWhereUniqueWithoutUserInput[];
+    updateMany?: Prisma.DevotionUpdateManyWithWhereWithoutUserInput | Prisma.DevotionUpdateManyWithWhereWithoutUserInput[];
+    deleteMany?: Prisma.DevotionScalarWhereInput | Prisma.DevotionScalarWhereInput[];
+};
+export type DevotionCreateWithoutUserInput = {
+    id?: string;
+    title: string;
+    content: string;
+    verse_reference?: string | null;
+    scriptureText?: string | null;
+    date?: Date | string;
+    imageUrl?: string | null;
+    readTime?: string | null;
+    author: string;
+    created_at?: Date | string;
+    devotion_date: Date | string;
+};
+export type DevotionUncheckedCreateWithoutUserInput = {
+    id?: string;
+    title: string;
+    content: string;
+    verse_reference?: string | null;
+    scriptureText?: string | null;
+    date?: Date | string;
+    imageUrl?: string | null;
+    readTime?: string | null;
+    author: string;
+    created_at?: Date | string;
+    devotion_date: Date | string;
+};
+export type DevotionCreateOrConnectWithoutUserInput = {
+    where: Prisma.DevotionWhereUniqueInput;
+    create: Prisma.XOR<Prisma.DevotionCreateWithoutUserInput, Prisma.DevotionUncheckedCreateWithoutUserInput>;
+};
+export type DevotionCreateManyUserInputEnvelope = {
+    data: Prisma.DevotionCreateManyUserInput | Prisma.DevotionCreateManyUserInput[];
+    skipDuplicates?: boolean;
+};
+export type DevotionUpsertWithWhereUniqueWithoutUserInput = {
+    where: Prisma.DevotionWhereUniqueInput;
+    update: Prisma.XOR<Prisma.DevotionUpdateWithoutUserInput, Prisma.DevotionUncheckedUpdateWithoutUserInput>;
+    create: Prisma.XOR<Prisma.DevotionCreateWithoutUserInput, Prisma.DevotionUncheckedCreateWithoutUserInput>;
+};
+export type DevotionUpdateWithWhereUniqueWithoutUserInput = {
+    where: Prisma.DevotionWhereUniqueInput;
+    data: Prisma.XOR<Prisma.DevotionUpdateWithoutUserInput, Prisma.DevotionUncheckedUpdateWithoutUserInput>;
+};
+export type DevotionUpdateManyWithWhereWithoutUserInput = {
+    where: Prisma.DevotionScalarWhereInput;
+    data: Prisma.XOR<Prisma.DevotionUpdateManyMutationInput, Prisma.DevotionUncheckedUpdateManyWithoutUserInput>;
+};
+export type DevotionScalarWhereInput = {
+    AND?: Prisma.DevotionScalarWhereInput | Prisma.DevotionScalarWhereInput[];
+    OR?: Prisma.DevotionScalarWhereInput[];
+    NOT?: Prisma.DevotionScalarWhereInput | Prisma.DevotionScalarWhereInput[];
+    id?: Prisma.StringFilter<"Devotion"> | string;
+    title?: Prisma.StringFilter<"Devotion"> | string;
+    content?: Prisma.StringFilter<"Devotion"> | string;
+    verse_reference?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    scriptureText?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    date?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    imageUrl?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    readTime?: Prisma.StringNullableFilter<"Devotion"> | string | null;
+    author?: Prisma.StringFilter<"Devotion"> | string;
+    created_at?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    devotion_date?: Prisma.DateTimeFilter<"Devotion"> | Date | string;
+    userId?: Prisma.StringFilter<"Devotion"> | string;
+};
+export type DevotionCreateManyUserInput = {
+    id?: string;
+    title: string;
+    content: string;
+    verse_reference?: string | null;
+    scriptureText?: string | null;
+    date?: Date | string;
+    imageUrl?: string | null;
+    readTime?: string | null;
+    author: string;
+    created_at?: Date | string;
+    devotion_date: Date | string;
+};
+export type DevotionUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    verse_reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    scriptureText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    readTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    author?: Prisma.StringFieldUpdateOperationsInput | string;
+    created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    devotion_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DevotionUncheckedUpdateWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    verse_reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    scriptureText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    readTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    author?: Prisma.StringFieldUpdateOperationsInput | string;
+    created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    devotion_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DevotionUncheckedUpdateManyWithoutUserInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    title?: Prisma.StringFieldUpdateOperationsInput | string;
+    content?: Prisma.StringFieldUpdateOperationsInput | string;
+    verse_reference?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    scriptureText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    imageUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    readTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    author?: Prisma.StringFieldUpdateOperationsInput | string;
+    created_at?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    devotion_date?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type DevotionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    content?: boolean;
+    verse_reference?: boolean;
+    scriptureText?: boolean;
+    date?: boolean;
+    imageUrl?: boolean;
+    readTime?: boolean;
+    author?: boolean;
+    created_at?: boolean;
+    devotion_date?: boolean;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["devotion"]>;
+export type DevotionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    content?: boolean;
+    verse_reference?: boolean;
+    scriptureText?: boolean;
+    date?: boolean;
+    imageUrl?: boolean;
+    readTime?: boolean;
+    author?: boolean;
+    created_at?: boolean;
+    devotion_date?: boolean;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["devotion"]>;
+export type DevotionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    title?: boolean;
+    content?: boolean;
+    verse_reference?: boolean;
+    scriptureText?: boolean;
+    date?: boolean;
+    imageUrl?: boolean;
+    readTime?: boolean;
+    author?: boolean;
+    created_at?: boolean;
+    devotion_date?: boolean;
+    userId?: boolean;
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+}, ExtArgs["result"]["devotion"]>;
+export type DevotionSelectScalar = {
+    id?: boolean;
+    title?: boolean;
+    content?: boolean;
+    verse_reference?: boolean;
+    scriptureText?: boolean;
+    date?: boolean;
+    imageUrl?: boolean;
+    readTime?: boolean;
+    author?: boolean;
+    created_at?: boolean;
+    devotion_date?: boolean;
+    userId?: boolean;
+};
+export type DevotionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "verse_reference" | "scriptureText" | "date" | "imageUrl" | "readTime" | "author" | "created_at" | "devotion_date" | "userId", ExtArgs["result"]["devotion"]>;
+export type DevotionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type DevotionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type DevotionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    user?: boolean | Prisma.UserDefaultArgs<ExtArgs>;
+};
+export type $DevotionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "Devotion";
+    objects: {
+        user: Prisma.$UserPayload<ExtArgs>;
+    };
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        title: string;
+        content: string;
+        verse_reference: string | null;
+        scriptureText: string | null;
+        date: Date;
+        imageUrl: string | null;
+        readTime: string | null;
+        author: string;
+        created_at: Date;
+        devotion_date: Date;
+        userId: string;
+    }, ExtArgs["result"]["devotion"]>;
+    composites: {};
+};
+export type DevotionGetPayload<S extends boolean | null | undefined | DevotionDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$DevotionPayload, S>;
+export type DevotionCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<DevotionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: DevotionCountAggregateInputType | true;
+};
+export interface DevotionDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['Devotion'];
+        meta: {
+            name: 'Devotion';
+        };
+    };
+    /**
+     * Find zero or one Devotion that matches the filter.
+     * @param {DevotionFindUniqueArgs} args - Arguments to find a Devotion
+     * @example
+     * // Get one Devotion
+     * const devotion = await prisma.devotion.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DevotionFindUniqueArgs>(args: Prisma.SelectSubset<T, DevotionFindUniqueArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one Devotion that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DevotionFindUniqueOrThrowArgs} args - Arguments to find a Devotion
+     * @example
+     * // Get one Devotion
+     * const devotion = await prisma.devotion.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DevotionFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, DevotionFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Devotion that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevotionFindFirstArgs} args - Arguments to find a Devotion
+     * @example
+     * // Get one Devotion
+     * const devotion = await prisma.devotion.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DevotionFindFirstArgs>(args?: Prisma.SelectSubset<T, DevotionFindFirstArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first Devotion that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevotionFindFirstOrThrowArgs} args - Arguments to find a Devotion
+     * @example
+     * // Get one Devotion
+     * const devotion = await prisma.devotion.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DevotionFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, DevotionFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more Devotions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevotionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Devotions
+     * const devotions = await prisma.devotion.findMany()
+     *
+     * // Get first 10 Devotions
+     * const devotions = await prisma.devotion.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const devotionWithIdOnly = await prisma.devotion.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends DevotionFindManyArgs>(args?: Prisma.SelectSubset<T, DevotionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a Devotion.
+     * @param {DevotionCreateArgs} args - Arguments to create a Devotion.
+     * @example
+     * // Create one Devotion
+     * const Devotion = await prisma.devotion.create({
+     *   data: {
+     *     // ... data to create a Devotion
+     *   }
+     * })
+     *
+     */
+    create<T extends DevotionCreateArgs>(args: Prisma.SelectSubset<T, DevotionCreateArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many Devotions.
+     * @param {DevotionCreateManyArgs} args - Arguments to create many Devotions.
+     * @example
+     * // Create many Devotions
+     * const devotion = await prisma.devotion.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends DevotionCreateManyArgs>(args?: Prisma.SelectSubset<T, DevotionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create many Devotions and returns the data saved in the database.
+     * @param {DevotionCreateManyAndReturnArgs} args - Arguments to create many Devotions.
+     * @example
+     * // Create many Devotions
+     * const devotion = await prisma.devotion.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Devotions and only return the `id`
+     * const devotionWithIdOnly = await prisma.devotion.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends DevotionCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, DevotionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Delete a Devotion.
+     * @param {DevotionDeleteArgs} args - Arguments to delete one Devotion.
+     * @example
+     * // Delete one Devotion
+     * const Devotion = await prisma.devotion.delete({
+     *   where: {
+     *     // ... filter to delete one Devotion
+     *   }
+     * })
+     *
+     */
+    delete<T extends DevotionDeleteArgs>(args: Prisma.SelectSubset<T, DevotionDeleteArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one Devotion.
+     * @param {DevotionUpdateArgs} args - Arguments to update one Devotion.
+     * @example
+     * // Update one Devotion
+     * const devotion = await prisma.devotion.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends DevotionUpdateArgs>(args: Prisma.SelectSubset<T, DevotionUpdateArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more Devotions.
+     * @param {DevotionDeleteManyArgs} args - Arguments to filter Devotions to delete.
+     * @example
+     * // Delete a few Devotions
+     * const { count } = await prisma.devotion.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends DevotionDeleteManyArgs>(args?: Prisma.SelectSubset<T, DevotionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Devotions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevotionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Devotions
+     * const devotion = await prisma.devotion.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends DevotionUpdateManyArgs>(args: Prisma.SelectSubset<T, DevotionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more Devotions and returns the data updated in the database.
+     * @param {DevotionUpdateManyAndReturnArgs} args - Arguments to update many Devotions.
+     * @example
+     * // Update many Devotions
+     * const devotion = await prisma.devotion.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Update zero or more Devotions and only return the `id`
+     * const devotionWithIdOnly = await prisma.devotion.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    updateManyAndReturn<T extends DevotionUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, DevotionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>;
+    /**
+     * Create or update one Devotion.
+     * @param {DevotionUpsertArgs} args - Arguments to update or create a Devotion.
+     * @example
+     * // Update or create a Devotion
+     * const devotion = await prisma.devotion.upsert({
+     *   create: {
+     *     // ... data to create a Devotion
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Devotion we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DevotionUpsertArgs>(args: Prisma.SelectSubset<T, DevotionUpsertArgs<ExtArgs>>): Prisma.Prisma__DevotionClient<runtime.Types.Result.GetResult<Prisma.$DevotionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of Devotions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevotionCountArgs} args - Arguments to filter Devotions to count.
+     * @example
+     * // Count the number of Devotions
+     * const count = await prisma.devotion.count({
+     *   where: {
+     *     // ... the filter for the Devotions we want to count
+     *   }
+     * })
+    **/
+    count<T extends DevotionCountArgs>(args?: Prisma.Subset<T, DevotionCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], DevotionCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a Devotion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevotionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DevotionAggregateArgs>(args: Prisma.Subset<T, DevotionAggregateArgs>): Prisma.PrismaPromise<GetDevotionAggregateType<T>>;
+    /**
+     * Group by Devotion.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DevotionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends DevotionGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: DevotionGroupByArgs['orderBy'];
+    } : {
+        orderBy?: DevotionGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, DevotionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDevotionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Devotion model
+     */
+    readonly fields: DevotionFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for Devotion.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__DevotionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the Devotion model
+ */
+export interface DevotionFieldRefs {
+    readonly id: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly title: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly content: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly verse_reference: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly scriptureText: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly date: Prisma.FieldRef<"Devotion", 'DateTime'>;
+    readonly imageUrl: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly readTime: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly author: Prisma.FieldRef<"Devotion", 'String'>;
+    readonly created_at: Prisma.FieldRef<"Devotion", 'DateTime'>;
+    readonly devotion_date: Prisma.FieldRef<"Devotion", 'DateTime'>;
+    readonly userId: Prisma.FieldRef<"Devotion", 'String'>;
+}
+/**
+ * Devotion findUnique
+ */
+export type DevotionFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Devotion to fetch.
+     */
+    where: Prisma.DevotionWhereUniqueInput;
+};
+/**
+ * Devotion findUniqueOrThrow
+ */
+export type DevotionFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Devotion to fetch.
+     */
+    where: Prisma.DevotionWhereUniqueInput;
+};
+/**
+ * Devotion findFirst
+ */
+export type DevotionFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Devotion to fetch.
+     */
+    where?: Prisma.DevotionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Devotions to fetch.
+     */
+    orderBy?: Prisma.DevotionOrderByWithRelationInput | Prisma.DevotionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Devotions.
+     */
+    cursor?: Prisma.DevotionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Devotions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Devotions.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Devotions.
+     */
+    distinct?: Prisma.DevotionScalarFieldEnum | Prisma.DevotionScalarFieldEnum[];
+};
+/**
+ * Devotion findFirstOrThrow
+ */
+export type DevotionFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Devotion to fetch.
+     */
+    where?: Prisma.DevotionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Devotions to fetch.
+     */
+    orderBy?: Prisma.DevotionOrderByWithRelationInput | Prisma.DevotionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Devotions.
+     */
+    cursor?: Prisma.DevotionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Devotions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Devotions.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Devotions.
+     */
+    distinct?: Prisma.DevotionScalarFieldEnum | Prisma.DevotionScalarFieldEnum[];
+};
+/**
+ * Devotion findMany
+ */
+export type DevotionFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Devotions to fetch.
+     */
+    where?: Prisma.DevotionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Devotions to fetch.
+     */
+    orderBy?: Prisma.DevotionOrderByWithRelationInput | Prisma.DevotionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Devotions.
+     */
+    cursor?: Prisma.DevotionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Devotions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Devotions.
+     */
+    skip?: number;
+    distinct?: Prisma.DevotionScalarFieldEnum | Prisma.DevotionScalarFieldEnum[];
+};
+/**
+ * Devotion create
+ */
+export type DevotionCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Devotion.
+     */
+    data: Prisma.XOR<Prisma.DevotionCreateInput, Prisma.DevotionUncheckedCreateInput>;
+};
+/**
+ * Devotion createMany
+ */
+export type DevotionCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Devotions.
+     */
+    data: Prisma.DevotionCreateManyInput | Prisma.DevotionCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * Devotion createManyAndReturn
+ */
+export type DevotionCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * The data used to create many Devotions.
+     */
+    data: Prisma.DevotionCreateManyInput | Prisma.DevotionCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionIncludeCreateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * Devotion update
+ */
+export type DevotionUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Devotion.
+     */
+    data: Prisma.XOR<Prisma.DevotionUpdateInput, Prisma.DevotionUncheckedUpdateInput>;
+    /**
+     * Choose, which Devotion to update.
+     */
+    where: Prisma.DevotionWhereUniqueInput;
+};
+/**
+ * Devotion updateMany
+ */
+export type DevotionUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Devotions.
+     */
+    data: Prisma.XOR<Prisma.DevotionUpdateManyMutationInput, Prisma.DevotionUncheckedUpdateManyInput>;
+    /**
+     * Filter which Devotions to update
+     */
+    where?: Prisma.DevotionWhereInput;
+    /**
+     * Limit how many Devotions to update.
+     */
+    limit?: number;
+};
+/**
+ * Devotion updateManyAndReturn
+ */
+export type DevotionUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelectUpdateManyAndReturn<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * The data used to update Devotions.
+     */
+    data: Prisma.XOR<Prisma.DevotionUpdateManyMutationInput, Prisma.DevotionUncheckedUpdateManyInput>;
+    /**
+     * Filter which Devotions to update
+     */
+    where?: Prisma.DevotionWhereInput;
+    /**
+     * Limit how many Devotions to update.
+     */
+    limit?: number;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionIncludeUpdateManyAndReturn<ExtArgs> | null;
+};
+/**
+ * Devotion upsert
+ */
+export type DevotionUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Devotion to update in case it exists.
+     */
+    where: Prisma.DevotionWhereUniqueInput;
+    /**
+     * In case the Devotion found by the `where` argument doesn't exist, create a new Devotion with this data.
+     */
+    create: Prisma.XOR<Prisma.DevotionCreateInput, Prisma.DevotionUncheckedCreateInput>;
+    /**
+     * In case the Devotion was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.DevotionUpdateInput, Prisma.DevotionUncheckedUpdateInput>;
+};
+/**
+ * Devotion delete
+ */
+export type DevotionDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+    /**
+     * Filter which Devotion to delete.
+     */
+    where: Prisma.DevotionWhereUniqueInput;
+};
+/**
+ * Devotion deleteMany
+ */
+export type DevotionDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which Devotions to delete
+     */
+    where?: Prisma.DevotionWhereInput;
+    /**
+     * Limit how many Devotions to delete.
+     */
+    limit?: number;
+};
+/**
+ * Devotion without action
+ */
+export type DevotionDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Devotion
+     */
+    select?: Prisma.DevotionSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the Devotion
+     */
+    omit?: Prisma.DevotionOmit<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Prisma.DevotionInclude<ExtArgs> | null;
+};
+export {};

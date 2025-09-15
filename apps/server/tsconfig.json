@@ -20,10 +20,12 @@
       "node"
     ],
     "composite": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
   },
   "tsc-alias": {
     "resolveFullPaths": true
-  },
-  "extends": "expo/tsconfig.base"
+  }
 }
