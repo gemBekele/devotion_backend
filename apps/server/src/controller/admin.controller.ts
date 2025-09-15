@@ -61,6 +61,7 @@ export async function authenticateToken(
     res
       .status(500)
       .json({ error: "Authentication failed", details: error.message });
+    return;
   }
 }
 
@@ -101,6 +102,7 @@ export async function requireAdmin(
     res
       .status(500)
       .json({ error: "Failed to verify admin status", details: error.message });
+    return;
   }
 }
 
@@ -162,14 +164,16 @@ export async function promoteToAdmin(req: Request, res: Response) {
     });
 
     if (!targetUser) {
-      return res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: "User not found" });
+      return;
     }
 
     if (targetUser.role === "admin") {
-      return res.status(400).json({ 
+      res.status(400).json({ 
         error: "User is already an admin",
         user: targetUser
       });
+      return;
     }
 
     // Update user role to admin
@@ -216,21 +220,24 @@ export async function demoteFromAdmin(req: Request, res: Response) {
     });
 
     if (!targetUser) {
-      return res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: "User not found" });
+      return;
     }
 
     if (targetUser.role !== "admin") {
-      return res.status(400).json({ 
+      res.status(400).json({ 
         error: "User is not an admin",
         user: targetUser
       });
+      return;
     }
 
     // Prevent self-demotion
     if (targetUser.id === req.user.id) {
-      return res.status(400).json({ 
+      res.status(400).json({ 
         error: "You cannot demote yourself from admin. Another admin must do this." 
       });
+      return;
     }
 
     // Update user role to regular user
@@ -326,7 +333,8 @@ export async function searchUsers(req: Request, res: Response) {
     const { query } = req.query;
 
     if (!query || typeof query !== 'string') {
-      return res.status(400).json({ error: "Search query is required" });
+      res.status(400).json({ error: "Search query is required" });
+      return;
     }
 
     console.log(`🔍 Admin searching users with query: "${query}"`);

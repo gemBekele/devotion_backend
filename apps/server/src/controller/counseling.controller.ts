@@ -5,7 +5,8 @@ import prisma from "../prisma";
 export async function createCounselingRequest(req: Request, res: Response) {
   try {
     if (!req.body) {
-      return res.status(400).json({ error: "Missing request body" });
+      res.status(400).json({ error: "Missing request body" });
+      return;
     }
 
     const {
@@ -17,7 +18,8 @@ export async function createCounselingRequest(req: Request, res: Response) {
     const userId = req.user?.id;
 
     if (!subject || !message || !userId) {
-      return res.status(400).json({ error: "Missing required fields" });
+      res.status(400).json({ error: "Missing required fields" });
+      return;
     }
 
     const counselingRequest = await prisma.counselingRequest.create({
@@ -30,12 +32,14 @@ export async function createCounselingRequest(req: Request, res: Response) {
       },
     });
 
-    return res.status(201).json(counselingRequest);
+    res.status(201).json(counselingRequest);
+    return;
   } catch (error: any) {
     console.error("Error creating counseling request:", error);
     res
       .status(500)
       .json({ error: "Failed to create counseling request", details: error.message });
+    return;
   }
 }
 
@@ -43,7 +47,8 @@ export async function createCounselingRequest(req: Request, res: Response) {
 export async function getUserCounselingRequests(req: Request, res: Response) {
   try {
     if (!req.user) {
-      return res.status(401).json({ error: "Authentication required" });
+      res.status(401).json({ error: "Authentication required" });
+      return;
     }
 
     const counselingRequests = await prisma.counselingRequest.findMany({
@@ -55,12 +60,14 @@ export async function getUserCounselingRequests(req: Request, res: Response) {
       },
     });
 
-    return res.json(counselingRequests);
+    res.json(counselingRequests);
+    return;
   } catch (error: any) {
     console.error("Error fetching counseling requests:", error);
     res
       .status(500)
       .json({ error: "Failed to fetch counseling requests", details: error.message });
+    return;
   }
 }
 
@@ -68,7 +75,8 @@ export async function getUserCounselingRequests(req: Request, res: Response) {
 export async function getAllCounselingRequests(req: Request, res: Response) {
   try {
     if (!req.user) {
-      return res.status(401).json({ error: "Authentication required" });
+      res.status(401).json({ error: "Authentication required" });
+      return;
     }
 
     // Check if user is admin
@@ -78,7 +86,8 @@ export async function getAllCounselingRequests(req: Request, res: Response) {
     });
 
     if (user?.role !== "admin") {
-      return res.status(403).json({ error: "Admin access required" });
+      res.status(403).json({ error: "Admin access required" });
+      return;
     }
 
     const counselingRequests = await prisma.counselingRequest.findMany({
@@ -96,12 +105,14 @@ export async function getAllCounselingRequests(req: Request, res: Response) {
       },
     });
 
-    return res.json(counselingRequests);
+    res.json(counselingRequests);
+    return;
   } catch (error: any) {
     console.error("Error fetching all counseling requests:", error);
     res
       .status(500)
       .json({ error: "Failed to fetch counseling requests", details: error.message });
+    return;
   }
 }
 
@@ -109,7 +120,8 @@ export async function getAllCounselingRequests(req: Request, res: Response) {
 export async function updateCounselingRequestStatus(req: Request, res: Response) {
   try {
     if (!req.user) {
-      return res.status(401).json({ error: "Authentication required" });
+      res.status(401).json({ error: "Authentication required" });
+      return;
     }
 
     // Check if user is admin
@@ -119,14 +131,16 @@ export async function updateCounselingRequestStatus(req: Request, res: Response)
     });
 
     if (user?.role !== "admin") {
-      return res.status(403).json({ error: "Admin access required" });
+      res.status(403).json({ error: "Admin access required" });
+      return;
     }
 
     const { id } = req.params;
     const { status, response } = req.body;
 
     if (!id || !status) {
-      return res.status(400).json({ error: "Missing required fields" });
+      res.status(400).json({ error: "Missing required fields" });
+      return;
     }
 
     const counselingRequest = await prisma.counselingRequest.update({
@@ -137,11 +151,13 @@ export async function updateCounselingRequestStatus(req: Request, res: Response)
       },
     });
 
-    return res.json(counselingRequest);
+    res.json(counselingRequest);
+    return;
   } catch (error: any) {
     console.error("Error updating counseling request:", error);
     res
       .status(500)
       .json({ error: "Failed to update counseling request", details: error.message });
+    return;
   }
 }

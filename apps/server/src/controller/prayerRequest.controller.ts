@@ -33,7 +33,8 @@ export async function authenticateToken(
     
     if (!token) {
       console.log("   ❌ No authentication token found");
-      return res.status(401).json({ error: "No authentication token provided" });
+      res.status(401).json({ error: "No authentication token provided" });
+      return;
     }
     
     console.log("   🔍 Validating session...");
@@ -64,7 +65,8 @@ export async function authenticateToken(
     
     if (!session) {
       console.log("   ❌ Session validation failed");
-      return res.status(401).json({ error: "Authentication required" });
+      res.status(401).json({ error: "Authentication required" });
+      return;
     }
 
     console.log("   ✅ Authentication successful");
@@ -85,14 +87,16 @@ export async function authenticateToken(
 export async function createPrayerRequest(req: Request, res: Response) {
   try {
     if (!req.body) {
-      return res.status(400).json({ error: "Missing request body" });
+      res.status(400).json({ error: "Missing request body" });
+      return;
     }
 
     const { title, description, isAnonymous } = req.body;
     const userId = req.user?.id;
 
     if (!title || !description || !userId) {
-      return res.status(400).json({ error: "Missing required fields" });
+      res.status(400).json({ error: "Missing required fields" });
+      return;
     }
 
     const prayerRequest = await prisma.prayerRequest.create({
@@ -116,7 +120,8 @@ export async function createPrayerRequest(req: Request, res: Response) {
       },
     });
 
-    return res.status(201).json(prayerRequest);
+    res.status(201).json(prayerRequest);
+    return;
   } catch (error: any) {
     console.error("Error creating prayer request:", error);
     res.status(500).json({
@@ -180,7 +185,8 @@ export async function getPrayerRequests(req: Request, res: Response) {
       prayerCount: request.prayers.length,
     }));
 
-    return res.json(updatedPrayerRequests);
+    res.json(updatedPrayerRequests);
+    return;
   } catch (error: any) {
     console.error("Error fetching prayer requests:", error);
     res.status(500).json({
@@ -196,7 +202,8 @@ export async function getPrayerRequestById(req: Request, res: Response) {
     const { id } = req.params;
 
     if (!id) {
-      return res.status(400).json({ error: "Missing prayer request ID" });
+      res.status(400).json({ error: "Missing prayer request ID" });
+      return;
     }
 
     const prayerRequest = await prisma.prayerRequest.findUnique({
@@ -226,10 +233,11 @@ export async function getPrayerRequestById(req: Request, res: Response) {
     });
 
     if (!prayerRequest) {
-      return res.status(404).json({ error: "Prayer request not found" });
+      res.status(404).json({ error: "Prayer request not found" });
+      return;
     }
 
-    return res.json({
+    res.json({
       ...prayerRequest,
       prayerCount: prayerRequest.prayers.length,
     });
@@ -250,7 +258,8 @@ export async function updatePrayerRequest(req: Request, res: Response) {
     const userId = req.user?.id;
 
     if (!id) {
-      return res.status(400).json({ error: "Missing prayer request ID" });
+      res.status(400).json({ error: "Missing prayer request ID" });
+      return;
     }
 
     // Check if the prayer request exists and belongs to the user
@@ -259,11 +268,13 @@ export async function updatePrayerRequest(req: Request, res: Response) {
     });
 
     if (!existingRequest) {
-      return res.status(404).json({ error: "Prayer request not found" });
+      res.status(404).json({ error: "Prayer request not found" });
+      return;
     }
 
     if (existingRequest.userId !== userId) {
-      return res.status(403).json({ error: "Not authorized to update this prayer request" });
+      res.status(403).json({ error: "Not authorized to update this prayer request" });
+      return;
     }
 
     // Build update data
@@ -289,7 +300,7 @@ export async function updatePrayerRequest(req: Request, res: Response) {
       },
     });
 
-    return res.json({
+    res.json({
       ...updatedPrayerRequest,
       prayerCount: updatedPrayerRequest.prayers.length,
     });
@@ -309,7 +320,8 @@ export async function deletePrayerRequest(req: Request, res: Response) {
     const userId = req.user?.id;
 
     if (!id) {
-      return res.status(400).json({ error: "Missing prayer request ID" });
+      res.status(400).json({ error: "Missing prayer request ID" });
+      return;
     }
 
     // Check if the prayer request exists and belongs to the user
@@ -318,18 +330,20 @@ export async function deletePrayerRequest(req: Request, res: Response) {
     });
 
     if (!existingRequest) {
-      return res.status(404).json({ error: "Prayer request not found" });
+      res.status(404).json({ error: "Prayer request not found" });
+      return;
     }
 
     if (existingRequest.userId !== userId) {
-      return res.status(403).json({ error: "Not authorized to delete this prayer request" });
+      res.status(403).json({ error: "Not authorized to delete this prayer request" });
+      return;
     }
 
     await prisma.prayerRequest.delete({
       where: { id },
     });
 
-    return res.json({ message: "Prayer request deleted successfully" });
+    res.json({ message: "Prayer request deleted successfully" });
   } catch (error: any) {
     console.error("Error deleting prayer request:", error);
     res.status(500).json({
@@ -346,11 +360,13 @@ export async function prayForRequest(req: Request, res: Response) {
     const userId = req.user?.id;
 
     if (!id) {
-      return res.status(400).json({ error: "Missing prayer request ID" });
+      res.status(400).json({ error: "Missing prayer request ID" });
+      return;
     }
 
     if (!userId) {
-      return res.status(401).json({ error: "User not authenticated" });
+      res.status(401).json({ error: "User not authenticated" });
+      return;
     }
 
     // Check if prayer request exists
@@ -359,11 +375,13 @@ export async function prayForRequest(req: Request, res: Response) {
     });
 
     if (!prayerRequest) {
-      return res.status(404).json({ error: "Prayer request not found" });
+      res.status(404).json({ error: "Prayer request not found" });
+      return;
     }
 
     if (prayerRequest.status !== "active") {
-      return res.status(400).json({ error: "Cannot pray for inactive prayer requests" });
+      res.status(400).json({ error: "Cannot pray for inactive prayer requests" });
+      return;
     }
 
     // Check if user has already prayed for this request
@@ -377,7 +395,8 @@ export async function prayForRequest(req: Request, res: Response) {
     });
 
     if (existingPrayer) {
-      return res.status(400).json({ error: "You have already prayed for this request" });
+      res.status(400).json({ error: "You have already prayed for this request" });
+      return;
     }
 
     // Create the prayer and update prayer count
@@ -414,7 +433,7 @@ export async function prayForRequest(req: Request, res: Response) {
       }),
     ]);
 
-    return res.json({
+    res.json({
       message: "Prayer added successfully",
       prayerRequest: {
         ...updatedPrayerRequest,
@@ -427,6 +446,7 @@ export async function prayForRequest(req: Request, res: Response) {
       error: "Failed to add prayer",
       details: error.message,
     });
+    return;
   }
 }
 
@@ -437,7 +457,8 @@ export async function getMyPrayerRequests(req: Request, res: Response) {
     const { status, limit = "20", offset = "0" } = req.query;
 
     if (!userId) {
-      return res.status(401).json({ error: "User not authenticated" });
+      res.status(401).json({ error: "User not authenticated" });
+      return;
     }
 
     const where: any = { userId };
@@ -476,7 +497,8 @@ export async function getMyPrayerRequests(req: Request, res: Response) {
       prayerCount: request.prayers.length,
     }));
 
-    return res.json(updatedPrayerRequests);
+    res.json(updatedPrayerRequests);
+    return;
   } catch (error: any) {
     console.error("Error fetching user's prayer requests:", error);
     res.status(500).json({

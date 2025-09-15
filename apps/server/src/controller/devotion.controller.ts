@@ -23,7 +23,8 @@ export async function authenticateToken(
 
     if (!sessionToken) {
       console.log("   ❌ No session token found");
-      return res.status(401).json({ error: "No token provided" });
+      res.status(401).json({ error: "No token provided" });
+      return;
     }
 
     console.log("   Session token:", sessionToken.substring(0, 20) + "...");
@@ -45,13 +46,15 @@ export async function authenticateToken(
 
     if (!session) {
       console.log("   ❌ Session not found in database");
-      return res.status(401).json({ error: "Invalid or expired token" });
+      res.status(401).json({ error: "Invalid or expired token" });
+      return;
     }
 
     // Check if session is expired
     if (session.expiresAt < new Date()) {
       console.log("   ❌ Session expired");
-      return res.status(401).json({ error: "Session expired" });
+      res.status(401).json({ error: "Session expired" });
+      return;
     }
 
     console.log("   ✅ Valid session for user:", session.user.email);
@@ -63,6 +66,7 @@ export async function authenticateToken(
     res
       .status(500)
       .json({ error: "Failed to validate token", details: error.message });
+    return;
   }
 }
 
@@ -74,7 +78,8 @@ export async function requireAdmin(
 ) {
   try {
     if (!req.user) {
-      return res.status(401).json({ error: "Authentication required" });
+      res.status(401).json({ error: "Authentication required" });
+      return;
     }
 
     // Get user with role from database
@@ -84,13 +89,15 @@ export async function requireAdmin(
     });
 
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: "User not found" });
+      return;
     }
 
     if (user.role !== "admin") {
-      return res.status(403).json({ 
+      res.status(403).json({ 
         error: "Admin access required. Only admin users can create devotions." 
       });
+      return;
     }
 
     req.user = { ...req.user, role: user.role }; // Attach role to user object
@@ -100,6 +107,7 @@ export async function requireAdmin(
     res
       .status(500)
       .json({ error: "Failed to verify admin status", details: error.message });
+    return;
   }
 }
 
@@ -107,7 +115,8 @@ export async function requireAdmin(
 export async function createDevotion(req: Request, res: Response) {
   try {
     if (!req.body) {
-      return res.status(400).json({ error: "Missing request body" });
+      res.status(400).json({ error: "Missing request body" });
+      return;
     }
 
     const {
@@ -122,7 +131,8 @@ export async function createDevotion(req: Request, res: Response) {
     const author = req.user?.name || "Anonymous"; // Use authenticated user's name
 
     if (!title || !content || !devotion_date || !userId || !readTime) {
-      return res.status(400).json({ error: "Missing required fields" });
+      res.status(400).json({ error: "Missing required fields" });
+      return;
     }
 
     // Handle image upload if file is provided
@@ -131,12 +141,14 @@ export async function createDevotion(req: Request, res: Response) {
     // Parse and validate date in UTC format
     const parsedDate = new Date(devotion_date);
     if (isNaN(parsedDate.getTime())) {
-      return res.status(400).json({ error: "Invalid date format" });
+      res.status(400).json({ error: "Invalid date format" });
+      return;
     }
 
     const parsedCreatedAt = Date.now();
     if (isNaN(parsedDate.getTime())) {
-      return res.status(400).json({ error: "Invalid date format" });
+      res.status(400).json({ error: "Invalid date format" });
+      return;
     }
 
     const devotion = await prisma.devotion.create({
@@ -157,12 +169,14 @@ export async function createDevotion(req: Request, res: Response) {
       },
     });
 
-    return res.status(201).json(devotion);
+    res.status(201).json(devotion);
+    return;
   } catch (error: any) {
     console.error("Error creating devotion:", error);
     res
       .status(500)
       .json({ error: "Failed to create devotion", details: error.message });
+    return;
   }
 }
 // Get devotions with a search parameter across title, verse_reference, user.name, and content
@@ -199,12 +213,14 @@ export async function getDevotions(req: Request, res: Response) {
     });
 
     // Return empty array instead of 404 for better client handling
-    return res.json(devotions);
+    res.json(devotions);
+    return;
   } catch (error: any) {
     console.error("Error fetching devotions:", error);
     res
       .status(500)
       .json({ error: "Failed to fetch devotions", details: error.message });
+    return;
   }
 }
 
@@ -214,7 +230,8 @@ export async function getDevotionsByDate(req: Request, res: Response) {
     const { date } = req.query;
 
     if (!date || typeof date !== "string") {
-      return res.status(400).json({ error: "Missing or invalid date" });
+      res.status(400).json({ error: "Missing or invalid date" });
+      return;
     }
 
     const devotions = await prisma.devotion.findMany({
@@ -236,13 +253,15 @@ export async function getDevotionsByDate(req: Request, res: Response) {
     });
 
     // Return empty array instead of 404 for better client handling
-    return res.json(devotions);
+    res.json(devotions);
+    return;
   } catch (error: any) {
     console.error("Error fetching devotions by date:", error);
     res.status(500).json({
       error: "Failed to fetch devotions by date",
       details: error.message,
     });
+    return;
   }
 }
 
@@ -252,7 +271,8 @@ export async function getDevotionById(req: Request, res: Response) {
     const { id } = req.params;
 
     if (!id) {
-      return res.status(400).json({ error: "Missing devotion ID" });
+      res.status(400).json({ error: "Missing devotion ID" });
+      return;
     }
 
     const devotion = await prisma.devotion.findUnique({
@@ -269,15 +289,18 @@ export async function getDevotionById(req: Request, res: Response) {
     });
 
     if (!devotion) {
-      return res.status(404).json({ error: "Devotion not found" });
+      res.status(404).json({ error: "Devotion not found" });
+      return;
     }
 
-    return res.json(devotion);
+    res.json(devotion);
+    return;
   } catch (error: any) {
     console.error("Error fetching devotion by ID:", error);
     res
       .status(500)
       .json({ error: "Failed to fetch devotion", details: error.message });
+    return;
   }
 }
 
@@ -285,7 +308,8 @@ export async function getDevotionById(req: Request, res: Response) {
 export async function getCurrentUser(req: Request, res: Response) {
   try {
     if (!req.user) {
-      return res.status(401).json({ error: "Authentication required" });
+      res.status(401).json({ error: "Authentication required" });
+      return;
     }
 
     const user = await prisma.user.findUnique({
@@ -301,14 +325,17 @@ export async function getCurrentUser(req: Request, res: Response) {
     });
 
     if (!user) {
-      return res.status(404).json({ error: "User not found" });
+      res.status(404).json({ error: "User not found" });
+      return;
     }
 
-    return res.json(user);
+    res.json(user);
+    return;
   } catch (error: any) {
     console.error("Error fetching user profile:", error);
     res
       .status(500)
       .json({ error: "Failed to fetch user profile", details: error.message });
+    return;
   }
 }
