@@ -4,8 +4,8 @@ services:
     env: node
     plan: free
     rootDir: apps/server
-    buildCommand: pnpm install && pnpm run build && npx prisma generate --schema ./apps/server/prisma/schema.prisma
-    startCommand: pnpm start
+    buildCommand: pnpm install && pnpm --filter server build && pnpm --filter server db:generate
+    startCommand: pnpm --filter server start
     envVars:
       - key: NODE_ENV
         value: production
